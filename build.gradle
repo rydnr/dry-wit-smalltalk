@@ -26,25 +26,25 @@ task retrieveFreshGtoolkitImage(type: RetrieveFreshGtoolkitImageTask, dependsOn:
   gtHome = gtoolkitHome
 }
 
-task loadObjectDiff(type: EvalSmalltalkExpressionTask, dependsOn: downloadFreshPharoImage) {
+task loadDryWitSmalltalk(type: EvalSmalltalkExpressionTask, dependsOn: downloadFreshPharoImage) {
     pharoPath = customPharoPath
     commonPharoArgs = customPharoArgs
-    expression = "Metacello new repository: 'github://rydnr/object-diff:${branchOrTag}'; baseline: 'ObjectDiff'; onConflictUseLoaded; load"
+    expression = "Metacello new repository: 'github://rydnr/dry-wit-smalltalk:${branchOrTag}'; baseline: 'DryWit'; onConflictUseLoaded; load"
 }
 
-task loadObjectDiffGt(type: EvalSmalltalkExpressionTask, dependsOn: retrieveFreshGtoolkitImage) {
+task loadDryWitSmalltalkGt(type: EvalSmalltalkExpressionTask, dependsOn: retrieveFreshGtoolkitImage) {
     pharoPath = customPharoPath
     commonPharoArgs = customPharoArgs
-    expression = "Metacello new repository: 'github://rydnr/object-diff:${branchOrTag}'; baseline: 'ObjectDiff'; onConflictUseLoaded; load"
+    expression = "Metacello new repository: 'github://rydnr/dry-wit-smalltalk:${branchOrTag}'; baseline: 'DryWit'; onConflictUseLoaded; load"
 }
 
-task customizeImage(type: RunSmalltalkScriptTask, dependsOn: loadObjectDiff) {
+task customizeImage(type: RunSmalltalkScriptTask, dependsOn: loadDryWitSmalltalk) {
     script = "customize.st"
     pharoPath = customPharoPath
     commonPharoArgs = customPharoArgs
 }
 
-task customizeImageGt(type: RunSmalltalkScriptTask, dependsOn: loadObjectDiffGt) {
+task customizeImageGt(type: RunSmalltalkScriptTask, dependsOn: loadDryWitSmalltalkGt) {
     script = "customize.st"
     pharoPath = customPharoPath
     commonPharoArgs = customPharoArgs

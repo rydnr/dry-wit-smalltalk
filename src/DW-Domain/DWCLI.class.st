@@ -1,5 +1,5 @@
 Class {
 	#name : #DWCLI,
 	#superclass : #Object,
-	#category : #'DW-Domain'
+	#category : #'DW-Domain-AWS-CLI'
 }

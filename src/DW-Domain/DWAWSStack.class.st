@@ -1,5 +1,5 @@
 Class {
 	#name : #DWAWSStack,
-	#superclass : #EDAAggregateRoot,
+	#superclass : #DWAggregateRoot,
 	#category : #'DW-Domain-AWS-CloudFormation'
 }

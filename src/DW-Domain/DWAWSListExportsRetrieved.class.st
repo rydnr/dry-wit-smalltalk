@@ -1,6 +1,6 @@
 Class {
 	#name : #DWAWSListExportsRetrieved,
-	#superclass : #EDAEventSourcingEvent,
+	#superclass : #DWEventSourcingEvent,
 	#instVars : [
 		'exports',
 		'requestId'

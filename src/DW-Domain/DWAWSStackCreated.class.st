@@ -1,6 +1,6 @@
 Class {
 	#name : #DWAWSStackCreated,
-	#superclass : #EDAEventSourcingEvent,
+	#superclass : #DWEventSourcingEvent,
 	#instVars : [
 		'physicalResourceId',
 		'stackName',

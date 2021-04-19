@@ -8,7 +8,15 @@ Class {
 
 { #category : #tests }
 DWAWSCloudFormationTest >> listExports_example [
-	| stackCreatedAttrs stackCreated listExportsAttrs listExports listExportsRetrievedAttrs listExportsRetrieved exports |
+	| credential accountCreated stackCreatedAttrs stackCreated listExportsAttrs listExports listExportsRetrievedAttrs listExportsRetrieved exports |
+	credential := '[Access key ID and scope]'.
+	accountCreated := DWAWSAccountInAWSRegionCreated
+		withBuilder:
+			(EDABuilder
+				with:
+					(Dictionary new
+						add: #credential -> credential;
+						yourself)).
 	stackCreatedAttrs := Dictionary new.
 	stackCreatedAttrs
 		add:
@@ -28,7 +36,7 @@ DWAWSCloudFormationTest >> listExports_example [
 	listExportsAttrs
 		add: #version -> '2015-05-15';
 		add: #algorithm -> 'AWS4-HMAC-SHA256';
-		add: #credential -> '[accessKey]';
+		add: #credential -> credential;
 		add: #date -> '20160316T233349Z';
 		add: #signedHeaders -> 'content-type;host';
 		add: #signature -> '[Signature]'.
@@ -50,11 +58,13 @@ DWAWSCloudFormationTest >> listExports_example [
 											'arn:aws:cloudformation:us-east-1:123456789012:stack/mySampleStack1/12a3b456-0e10-4ce0-9052-5d484a8c4e5b';
 								add: #value -> 'sg-0a123b45';
 								yourself))).
-	listExportsRetrievedAttrs add: #exports -> exports; add: #requestId -> '5ccc7dcd-744c-11e5-be70-1b08c228efb3'.
+	listExportsRetrievedAttrs
+		add: #exports -> exports;
+		add: #requestId -> '5ccc7dcd-744c-11e5-be70-1b08c228efb3'.
 	listExportsRetrieved := DWAWSListExportsRetrieved
 		withBuilder: (EDABuilder with: listExportsRetrievedAttrs).
 	^ EDAExample
-		given: (OrderedCollection with: stackCreated)
+		given: (OrderedCollection with: accountCreated with: stackCreated)
 		when: listExports
 		then: (OrderedCollection with: listExportsRetrieved)
 ]

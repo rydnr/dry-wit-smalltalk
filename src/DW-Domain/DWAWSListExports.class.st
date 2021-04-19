@@ -1,6 +1,6 @@
 Class {
 	#name : #DWAWSListExports,
-	#superclass : #EDAUserCommand,
+	#superclass : #DWUserCommand,
 	#instVars : [
 		'algorithm',
 		'credential',
@@ -37,6 +37,11 @@ DWAWSListExports class >> withBuilder: aBuilder [
 		build: self.
 	result version: self latestVersion.
 	^ result
+]
+
+{ #category : #'aggregate selection' }
+DWAWSListExports >> aggregateSelectionCriteria [
+	^ Dictionary with: 'credential' -> self credential
 ]
 
 { #category : #accessing }

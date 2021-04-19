@@ -24,7 +24,7 @@ DWAWSListExports class >> latestVersion [
 
 { #category : #'instance creation' }
 DWAWSListExports class >> withBuilder: aBuilder [
-	<eventName: #LIST_EXPORTS>
+	<commandName: #LIST_EXPORTS>
 	<builderClass: #EDABuilder>
 	| result |
 	result := aBuilder
@@ -35,6 +35,7 @@ DWAWSListExports class >> withBuilder: aBuilder [
 		withSignedHeaders;
 		withSignature;
 		build: self.
+	result version: self latestVersion.
 	^ result
 ]
 

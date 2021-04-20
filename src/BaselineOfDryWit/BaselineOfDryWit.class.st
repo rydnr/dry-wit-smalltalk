@@ -34,7 +34,7 @@ BaselineOfDryWit >> declarePackagesIn: spec [
 		package: #'DW-Domain-AWS-CloudFormation'
 			with: [ spec requires: #('DW-Domain-Base') ];
 		package: #'DW-Domain-AWS'
-			with: [ spec requires: #('DW-Domain-CloudFormation') ];
+			with: [ spec requires: #('DW-Domain-AWS-CloudFormation') ];
 		package: #'DW-Domain-AWS-CloudFormation-Tests'
 			with: [ spec requires: #('DW-Domain-AWS-CloudFormation' 'DW-Domain-AWS') ];
 		package: #'DW-Application' with: [ spec requires: #('DW-Domain-AWS') ]

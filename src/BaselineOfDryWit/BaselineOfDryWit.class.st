@@ -21,18 +21,23 @@ BaselineOfDryWit >> baseline: spec [
 { #category : #groups }
 BaselineOfDryWit >> declareGroupsIn: spec [
 	spec
-		group: 'core' with: #('DW-Domain-AWS-CloudFormation' 'DW-Domain' 'DW-Application');
-		group: 'tests' with: #('DW-Domain-Tests');
+		group: 'core'
+			with: #('DW-Domain-Base' 'DW-Domain-AWS-CloudFormation' 'DW-Domain-AWS' 'DW-Application');
+		group: 'tests' with: #('DW-Domain-AWS-CloudFormation-Tests');
 		group: 'default' with: #('core' 'tests')
 ]
 
 { #category : #packages }
 BaselineOfDryWit >> declarePackagesIn: spec [
 	spec
-		package: #'DW-Domain-AWS-CloudFormation';
-		package: #'DW-Domain' with: [ spec requires: #('DW-Domain-AWS-CloudFormation' 'PharoEDA') ];
-		package: #'DW-Domain-Tests' with: [ spec requires: #('DW-Domain') ];
-		package: #'DW-Application' with: [ spec requires: #('DW-Domain') ]
+		package: #'DW-Domain-Base' with: [ spec requires: #('PharoEDA') ];
+		package: #'DW-Domain-AWS-CloudFormation'
+			with: [ spec requires: #('DW-Domain-Base') ];
+		package: #'DW-Domain-AWS'
+			with: [ spec requires: #('DW-Domain-CloudFormation') ];
+		package: #'DW-Domain-AWS-CloudFormation-Tests'
+			with: [ spec requires: #('DW-Domain-AWS-CloudFormation' 'DW-Domain-AWS') ];
+		package: #'DW-Application' with: [ spec requires: #('DW-Domain-AWS') ]
 ]
 
 { #category : #dependencies }

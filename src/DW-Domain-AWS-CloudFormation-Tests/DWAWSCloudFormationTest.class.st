@@ -3,7 +3,7 @@ Class {
 	#superclass : #BabyMock2TestCase,
 	#traits : 'EDATDomainBDD',
 	#classTraits : 'EDATDomainBDD classTrait',
-	#category : #'DW-Domain-CloudFormation-Tests'
+	#category : #'DW-Domain-AWS-CloudFormation-Tests'
 }
 
 { #category : #tests }

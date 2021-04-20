@@ -21,7 +21,7 @@ BaselineOfDryWit >> baseline: spec [
 { #category : #groups }
 BaselineOfDryWit >> declareGroupsIn: spec [
 	spec
-		group: 'core' with: #('DW-Domain' 'DW-Application');
+		group: 'core' with: #('DW-Domain-AWS-CloudFormation' 'DW-Domain' 'DW-Application');
 		group: 'tests' with: #('DW-Domain-Tests');
 		group: 'default' with: #('core' 'tests')
 ]
@@ -29,7 +29,8 @@ BaselineOfDryWit >> declareGroupsIn: spec [
 { #category : #packages }
 BaselineOfDryWit >> declarePackagesIn: spec [
 	spec
-		package: #'DW-Domain' with: [ spec requires: #('PharoEDA') ];
+		package: #'DW-Domain-AWS-CloudFormation';
+		package: #'DW-Domain' with: [ spec requires: #('DW-Domain-AWS-CloudFormation' 'PharoEDA') ];
 		package: #'DW-Domain-Tests' with: [ spec requires: #('DW-Domain') ];
 		package: #'DW-Application' with: [ spec requires: #('DW-Domain') ]
 ]

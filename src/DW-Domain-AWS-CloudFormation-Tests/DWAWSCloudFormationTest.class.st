@@ -10,7 +10,7 @@ Class {
 DWAWSCloudFormationTest >> listExports_example [
 	| credential accountCreated stackCreatedAttrs stackCreated listExportsAttrs listExports listExportsRetrievedAttrs listExportsRetrieved exports |
 	credential := '[Access key ID and scope]'.
-	accountCreated := DWAWSAccountInAWSRegionCreated
+	accountCreated := DWAWSAccountCreated
 		withBuilder:
 			(EDABuilder
 				with:
@@ -38,6 +38,7 @@ DWAWSCloudFormationTest >> listExports_example [
 		add: #algorithm -> 'AWS4-HMAC-SHA256';
 		add: #credential -> credential;
 		add: #date -> '20160316T233349Z';
+		add: #region -> 'us-east-1';
 		add: #signedHeaders -> 'content-type;host';
 		add: #signature -> '[Signature]'.
 	listExports := DWAWSListExports
@@ -73,7 +74,7 @@ DWAWSCloudFormationTest >> listExports_example [
 DWAWSCloudFormationTest >> listExports_example2 [
 	| credential accountCreated stackCreatedAttrs stackCreated listExportsAttrs listExports listExportsRetrievedAttrs listExportsRetrieved exports |
 	credential := '[other access key ID and scope]'.
-	accountCreated := DWAWSAccountInAWSRegionCreated
+	accountCreated := DWAWSAccountCreated
 		withBuilder:
 			(EDABuilder
 				with:
@@ -101,6 +102,7 @@ DWAWSCloudFormationTest >> listExports_example2 [
 		add: #algorithm -> 'AWS4-HMAC-SHA256';
 		add: #credential -> credential;
 		add: #date -> '20190316T233349Z';
+		add: #region -> 'us-east-1';
 		add: #signedHeaders -> 'content-type;host';
 		add: #signature -> '[Signature2]'.
 	listExports := DWAWSListExports
@@ -137,13 +139,13 @@ DWAWSCloudFormationTest >> listExports_test [
 	| example |
 	example := self listExports_example.
 	self
-		givenAggregate: #DWAWSAccountInAWSRegion
+		givenAggregate: #DWAWSAccount
 		withEvents: example given
 		whenReceiveCommand: example when
 		thenEvents: example then.
-			example := self listExports_example2.
+	example := self listExports_example2.
 	self
-		givenAggregate: #DWAWSAccountInAWSRegion
+		givenAggregate: #DWAWSAccount
 		withEvents: example given
 		whenReceiveCommand: example when
 		thenEvents: example then

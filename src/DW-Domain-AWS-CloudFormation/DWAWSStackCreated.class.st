@@ -8,7 +8,7 @@ Class {
 		'stackId',
 		'logicalResourceId'
 	],
-	#category : #'DW-Domain-AWS-CloudFormation'
+	#category : #'DW-Domain-AWS-CloudFormation-Stacks'
 }
 
 { #category : #meta }

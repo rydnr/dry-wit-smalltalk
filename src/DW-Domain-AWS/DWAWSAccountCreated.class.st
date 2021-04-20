@@ -1,5 +1,5 @@
 Class {
-	#name : #DWAWSAccountInAWSRegionCreated,
+	#name : #DWAWSAccountCreated,
 	#superclass : #DWEventSourcingEvent,
 	#instVars : [
 		'credential'
@@ -8,18 +8,18 @@ Class {
 }
 
 { #category : #meta }
-DWAWSAccountInAWSRegionCreated class >> aggregateRootClass [
-	^ DWAWSAccountInAWSRegion
+DWAWSAccountCreated class >> aggregateRootClass [
+	^ DWAWSAccount
 ]
 
 { #category : #accessing }
-DWAWSAccountInAWSRegionCreated class >> latestVersion [
+DWAWSAccountCreated class >> latestVersion [
 	<doc: 'Retrieves the latest version of the event class'>
 	^ 1
 ]
 
 { #category : #meta }
-DWAWSAccountInAWSRegionCreated class >> withBuilder: aBuilder [
+DWAWSAccountCreated class >> withBuilder: aBuilder [
 	<builderClass: #EDABuilder>
 	| result |
 	result := aBuilder
@@ -29,11 +29,11 @@ DWAWSAccountInAWSRegionCreated class >> withBuilder: aBuilder [
 ]
 
 { #category : #accessing }
-DWAWSAccountInAWSRegionCreated >> credential [
+DWAWSAccountCreated >> credential [
 	^ credential
 ]
 
 { #category : #accessing }
-DWAWSAccountInAWSRegionCreated >> credential: anObject [
+DWAWSAccountCreated >> credential: anObject [
 	credential := anObject
 ]

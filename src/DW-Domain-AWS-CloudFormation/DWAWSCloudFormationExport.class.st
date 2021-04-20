@@ -6,7 +6,7 @@ Class {
 		'exportingStackId',
 		'value'
 	],
-	#category : #'DW-Domain-AWS-CloudFormation'
+	#category : #'DW-Domain-AWS-CloudFormation-Exports'
 }
 
 { #category : #'instance creation' }

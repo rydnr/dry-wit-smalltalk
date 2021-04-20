@@ -5,12 +5,12 @@ Class {
 		'exports',
 		'requestId'
 	],
-	#category : #'DW-Domain-AWS-CloudFormation'
+	#category : #'DW-Domain-AWS-CloudFormation-Exports'
 }
 
 { #category : #meta }
 DWAWSListExportsRetrieved class >> aggregateRootClass [
-	^ DWAWSAccountInAWSRegion
+	^ DWAWSAccount
 ]
 
 { #category : #accessing }

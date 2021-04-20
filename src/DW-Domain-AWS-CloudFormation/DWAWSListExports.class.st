@@ -5,15 +5,16 @@ Class {
 		'algorithm',
 		'credential',
 		'date',
+		'region',
 		'signedHeaders',
 		'signature'
 	],
-	#category : #'DW-Domain-AWS-CloudFormation'
+	#category : #'DW-Domain-AWS-CloudFormation-Exports'
 }
 
 { #category : #meta }
 DWAWSListExports class >> aggregateRootClass [
-	^ DWAWSAccountInAWSRegion
+	^ DWAWSAccount
 ]
 
 { #category : #accessing }
@@ -32,6 +33,7 @@ DWAWSListExports class >> withBuilder: aBuilder [
 		withAlgorithm;
 		withCredential;
 		withDate;
+		withRegion;
 		withSignedHeaders;
 		withSignature;
 		build: self.
@@ -72,6 +74,16 @@ DWAWSListExports >> date [
 { #category : #accessing }
 DWAWSListExports >> date: anObject [
 	date := anObject
+]
+
+{ #category : #accessing }
+DWAWSListExports >> region [
+	^ region
+]
+
+{ #category : #accessing }
+DWAWSListExports >> region: anObject [
+	region := anObject
 ]
 
 { #category : #accessing }

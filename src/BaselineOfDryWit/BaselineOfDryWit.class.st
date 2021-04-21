@@ -47,7 +47,7 @@ BaselineOfDryWit >> declarePharoAwsToolboxIn: spec groups: aGroupCollection [
 	spec
 		baseline: 'AWSToolbox'
 		with: [ spec
-				repository: 'github://jvdsandt/pharo-aws-toolbox:master/repository';
+				repository: 'github://rydnr/pharo-aws-toolbox:master/repository';
 				loads: aGroupCollection ].
 	^ spec
 ]

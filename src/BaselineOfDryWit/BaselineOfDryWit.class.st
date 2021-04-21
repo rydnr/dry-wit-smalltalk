@@ -11,11 +11,13 @@ BaselineOfDryWit >> baseline: spec [
 		for: #common
 		do: [ spec blessing: #baseline.
 			self
+				declarePharoAwsToolboxIn: spec
+				groups: (OrderedCollection with: 'default').
+			self
 				declarePharoEDAIn: spec
 				groups: (OrderedCollection with: 'default').
 			self declarePackagesIn: spec.
 			self declareGroupsIn: spec ]
-
 ]
 
 { #category : #groups }
@@ -38,6 +40,16 @@ BaselineOfDryWit >> declarePackagesIn: spec [
 		package: #'DW-Domain-AWS-CloudFormation-Tests'
 			with: [ spec requires: #('DW-Domain-AWS-CloudFormation' 'DW-Domain-AWS') ];
 		package: #'DW-Application' with: [ spec requires: #('DW-Domain-AWS') ]
+]
+
+{ #category : #dependencies }
+BaselineOfDryWit >> declarePharoAwsToolboxIn: spec groups: aGroupCollection [
+	spec
+		baseline: 'AWSToolbox'
+		with: [ spec
+				repository: 'github://jvdsandt/pharo-aws-toolbox:master/repository';
+				loads: aGroupCollection ].
+	^ spec
 ]
 
 { #category : #dependencies }

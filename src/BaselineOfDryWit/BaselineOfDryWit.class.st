@@ -34,7 +34,7 @@ BaselineOfDryWit >> declarePackagesIn: spec [
 	spec
 		package: #'DW-Domain-Base' with: [ spec requires: #('PharoEDA') ];
 		package: #'DW-Domain-AWS-CloudFormation'
-			with: [ spec requires: #('DW-Domain-Base') ];
+			with: [ spec requires: #('DW-Domain-Base' 'AWSToolbox') ];
 		package: #'DW-Domain-AWS'
 			with: [ spec requires: #('DW-Domain-AWS-CloudFormation') ];
 		package: #'DW-Domain-AWS-CloudFormation-Tests'

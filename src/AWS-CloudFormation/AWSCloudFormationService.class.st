@@ -28,3 +28,21 @@ AWSCloudFormationService >> listExports [
 	^ AWSCloudFormationListExportsResponse
 		fromXmlString: response contents
 ]
+
+{ #category : #api }
+AWSCloudFormationService >> listStacks [
+	| url httpRequest response |
+	url := self endpoint asZnUrl.
+	url queryAt: 'Action' put: 'ListStacks'.
+	url queryAt: 'Version' put: '2010-05-15'.
+	httpRequest := ZnRequest get: url.
+	self signRequest: httpRequest.
+	response := self httpClient
+		request: httpRequest;
+		execute;
+		response.
+	response isSuccess
+		ifFalse: [ self handleErrorResponse: response ].
+	^ AWSCloudFormationListStacksResponse
+		fromXmlString: response contents
+]

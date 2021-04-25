@@ -29,13 +29,8 @@ DWAWSListExports class >> withBuilder: aBuilder [
 	<builderClass: #EDABuilder>
 	| result |
 	result := aBuilder
-		withVersion;
-		withAlgorithm;
 		withCredential;
-		withDate;
 		withRegion;
-		withSignedHeaders;
-		withSignature;
 		build: self.
 	result version: self latestVersion.
 	^ result

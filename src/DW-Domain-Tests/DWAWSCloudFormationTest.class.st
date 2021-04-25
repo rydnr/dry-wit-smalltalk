@@ -46,7 +46,7 @@ DWAWSCloudFormationTest >> listExports_example [
 	exports := OrderedCollection new.
 	exports
 		add:
-			(DWAWSCloudFormationExport
+			(DWAWSExport
 				withBuilder:
 					(EDABuilder
 						with:
@@ -61,7 +61,7 @@ DWAWSCloudFormationTest >> listExports_example [
 	listExportsRetrievedAttrs
 		add: #exports -> exports;
 		add: #requestId -> '5ccc7dcd-744c-11e5-be70-1b08c228efb3'.
-	listExportsRetrieved := DWAWSListExportsRetrieved
+	listExportsRetrieved := DWAWSExportsRetrieved
 		withBuilder: (EDABuilder with: listExportsRetrievedAttrs).
 	^ EDAExample
 		given: (OrderedCollection with: accountCreated with: stackCreated)
@@ -109,7 +109,7 @@ DWAWSCloudFormationTest >> listExports_example2 [
 	exports := OrderedCollection new.
 	exports
 		add:
-			(DWAWSCloudFormationExport
+			(DWAWSExport
 				withBuilder:
 					(EDABuilder
 						with:
@@ -124,7 +124,7 @@ DWAWSCloudFormationTest >> listExports_example2 [
 	listExportsRetrievedAttrs
 		add: #exports -> exports;
 		add: #requestId -> '7ccc7dcd-744c-11e5-be70-1b08c228efb3'.
-	listExportsRetrieved := DWAWSListExportsRetrieved
+	listExportsRetrieved := DWAWSExportsRetrieved
 		withBuilder: (EDABuilder with: listExportsRetrievedAttrs).
 	^ EDAExample
 		given: (OrderedCollection with: accountCreated with: stackCreated)

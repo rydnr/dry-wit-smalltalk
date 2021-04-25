@@ -41,5 +41,5 @@ DWAWSAccount >> handleListExports: aCommand [
 		withCredential: self credential
 		andRegion: aCommand region.
 	output := client request.
-	^ DWAWSListExportsRetrieved withBuilder: (EDABuilder with: output)
+	^ DWAWSExportsRetrieved withBuilder: (EDABuilder with: output)
 ]

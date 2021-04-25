@@ -1,5 +1,5 @@
 Class {
-	#name : #DWAWSListExportsRetrieved,
+	#name : #DWAWSExportsRetrieved,
 	#superclass : #DWEventSourcingEvent,
 	#instVars : [
 		'exports',
@@ -9,18 +9,18 @@ Class {
 }
 
 { #category : #meta }
-DWAWSListExportsRetrieved class >> aggregateRootClass [
+DWAWSExportsRetrieved class >> aggregateRootClass [
 	^ DWAWSAccount
 ]
 
 { #category : #accessing }
-DWAWSListExportsRetrieved class >> latestVersion [
+DWAWSExportsRetrieved class >> latestVersion [
 	<doc: 'Retrieves the latest version of the event class'>
 	^ 1
 ]
 
 { #category : #'instance creation' }
-DWAWSListExportsRetrieved class >> withBuilder: aBuilder [
+DWAWSExportsRetrieved class >> withBuilder: aBuilder [
 	<eventName: #LIST_EXPORTS_RETRIEVED>
 	<builderClass: #EDABuilder>
 	| result |
@@ -32,21 +32,21 @@ DWAWSListExportsRetrieved class >> withBuilder: aBuilder [
 ]
 
 { #category : #accessing }
-DWAWSListExportsRetrieved >> exports [
+DWAWSExportsRetrieved >> exports [
 	^ exports
 ]
 
 { #category : #accessing }
-DWAWSListExportsRetrieved >> exports: anObject [
+DWAWSExportsRetrieved >> exports: anObject [
 	exports := anObject
 ]
 
 { #category : #accessing }
-DWAWSListExportsRetrieved >> requestId [
+DWAWSExportsRetrieved >> requestId [
 	^ requestId
 ]
 
 { #category : #accessing }
-DWAWSListExportsRetrieved >> requestId: anObject [
+DWAWSExportsRetrieved >> requestId: anObject [
 	requestId := anObject
 ]

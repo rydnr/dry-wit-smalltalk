@@ -1,5 +1,5 @@
 Class {
-	#name : #DWAWSCloudFormationExport,
+	#name : #DWAWSExport,
 	#superclass : #Object,
 	#instVars : [
 		'name',
@@ -10,36 +10,36 @@ Class {
 }
 
 { #category : #'instance creation' }
-DWAWSCloudFormationExport class >> withBuilder: aBuilder [
+DWAWSExport class >> withBuilder: aBuilder [
 	^ aBuilder withName; withExportingStackId; withValue; build: self
 ]
 
 { #category : #accessing }
-DWAWSCloudFormationExport >> exportingStackId [
+DWAWSExport >> exportingStackId [
 	^ exportingStackId
 ]
 
 { #category : #accessing }
-DWAWSCloudFormationExport >> exportingStackId: anObject [
+DWAWSExport >> exportingStackId: anObject [
 	exportingStackId := anObject
 ]
 
 { #category : #accessing }
-DWAWSCloudFormationExport >> name [
+DWAWSExport >> name [
 	^ name
 ]
 
 { #category : #accessing }
-DWAWSCloudFormationExport >> name: anObject [
+DWAWSExport >> name: anObject [
 	name := anObject
 ]
 
 { #category : #accessing }
-DWAWSCloudFormationExport >> value [
+DWAWSExport >> value [
 	^ value
 ]
 
 { #category : #accessing }
-DWAWSCloudFormationExport >> value: anObject [
+DWAWSExport >> value: anObject [
 	value := anObject
 ]

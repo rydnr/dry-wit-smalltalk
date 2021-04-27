@@ -2,12 +2,8 @@ Class {
 	#name : #DWAWSListExports,
 	#superclass : #DWUserCommand,
 	#instVars : [
-		'algorithm',
 		'credential',
-		'date',
-		'region',
-		'signedHeaders',
-		'signature'
+		'region'
 	],
 	#category : #'DW-Domain-AWS-CloudFormation-Exports'
 }
@@ -42,16 +38,6 @@ DWAWSListExports >> aggregateSelectionCriteria [
 ]
 
 { #category : #accessing }
-DWAWSListExports >> algorithm [
-	^ algorithm
-]
-
-{ #category : #accessing }
-DWAWSListExports >> algorithm: anObject [
-	algorithm := anObject
-]
-
-{ #category : #accessing }
 DWAWSListExports >> credential [
 	^ credential
 ]
@@ -62,16 +48,6 @@ DWAWSListExports >> credential: anObject [
 ]
 
 { #category : #accessing }
-DWAWSListExports >> date [
-	^ date
-]
-
-{ #category : #accessing }
-DWAWSListExports >> date: anObject [
-	date := anObject
-]
-
-{ #category : #accessing }
 DWAWSListExports >> region [
 	^ region
 ]
@@ -79,24 +55,4 @@ DWAWSListExports >> region [
 { #category : #accessing }
 DWAWSListExports >> region: anObject [
 	region := anObject
-]
-
-{ #category : #accessing }
-DWAWSListExports >> signature [
-	^ signature
-]
-
-{ #category : #accessing }
-DWAWSListExports >> signature: anObject [
-	signature := anObject
-]
-
-{ #category : #accessing }
-DWAWSListExports >> signedHeaders [
-	^ signedHeaders
-]
-
-{ #category : #accessing }
-DWAWSListExports >> signedHeaders: anObject [
-	signedHeaders := anObject
 ]

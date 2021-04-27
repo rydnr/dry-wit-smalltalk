@@ -1,19 +1,26 @@
 Class {
 	#name : #DWAWSListExportsTest,
 	#superclass : #BabyMock2TestCase,
-	#traits : 'EDATBDDHelper',
-	#classTraits : 'EDATBDDHelper classTrait',
+	#traits : 'EDATDomainBDD',
+	#classTraits : 'EDATDomainBDD classTrait',
 	#category : #'DW-Domain-AWS-CloudFormation-Tests'
 }
 
 { #category : #'tests - examples' }
 DWAWSListExportsTest >> exportsRetrieved_example [
-	| exportsRetrieved exportingStackId name value credential region listExports |
+	| exportsRetrieved exportingStackId name value credential region listExports accountCreated |
+	credential := 'credential'.
+	region := 'eu-west-1'.
+	accountCreated := DWAWSAccountCreated
+		withBuilder:
+			(EDABuilder
+				with:
+					(Dictionary new
+						add: 'credential' -> credential;
+						yourself)).
 	exportingStackId := UUID new greaseString.
 	name := UUID new greaseString.
 	value := UUID new greaseString.
-	credential := 'credential'.
-	region := 'eu-west-1'.
 	listExports := DWAWSListExports
 		withBuilder:
 			(EDABuilder
@@ -32,7 +39,7 @@ DWAWSListExportsTest >> exportsRetrieved_example [
 						add: 'value' -> value;
 						yourself)).
 	^ EDAExample
-		given: OrderedCollection empty
+		given: (OrderedCollection with: accountCreated)
 		when: listExports
 		then: (OrderedCollection with: exportsRetrieved)
 ]

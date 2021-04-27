@@ -6,7 +6,7 @@ Class {
 
 { #category : #'class initialization' }
 DWSettings class >> doInitialize [
-	self duEnvironmentClass: EDADUEnvironment
+	"self duEnvironmentClass: EDADUEnvironment"
 ]
 
 { #category : #'class initialization' }

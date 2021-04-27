@@ -1,0 +1,80 @@
+{
+  "commandListener": {
+    "host": "rabbitmq",
+    "port": 61613,
+    "user": "dwCommandReading",
+    "password": "secret",
+    "queue": "commands-to-dw",
+    "durable": true,
+    "ack": "client-individual",
+    "prefetchCount": 1,
+    "timeout": 60,
+    "debug": false,
+    "restartOnError": true
+  },
+  "eventListener": {
+    "host": "rabbitmq",
+    "port": 61613,
+    "user": "dwEventReading",
+    "password": "secret",
+    "queue": "events-to-dw",
+    "durable": true,
+    "ack": "client-individual",
+    "prefetchCount": 1,
+    "timeout": 60,
+    "debug": false,
+    "restartOnError": true
+  },
+  "eventPublisher": {
+    "host": "rabbitmq",
+    "port": 61613,
+    "user": "dwEventWriting",
+    "password": "secret",
+    "exchange": "events-from-dw",
+    "routingKey": "#",
+    "durable": true,
+    "timeout": 60,
+    "errorExchange": "errors-from-dw",
+    "errorRoutingKey": "#"
+  },
+  "eventStore": {
+    "urls": "mongodb://localhost:27017/admin",
+    "tls": false,
+    "username": "dwEventStore",
+    "password": "secret",
+    "database": "EventStore",
+    "authenticationMechanism": "SCRAM-SHA-1",
+    "debug": true,
+    "enableReplication": false,
+    "enableSingleton": false,
+    "ensuringCurrentOnSave": false,
+    "ensuringCurrentReferencesOnQueries": false,
+    "lazySynchronize": true,
+    "wireProtocolEnabled": true,
+    "forceEager": false
+  },
+  "projections": {
+    "projectionsRepository": {
+      "urls": "mongodb://localhost:27017/admin",
+      "tls": false,
+      "username": "dwProjections",
+      "password": "secret",
+      "database": "Projections",
+      "authenticationMechanism": "SCRAM-SHA-1",
+      "debug": true,
+      "enableReplication": false,
+      "enableSingleton": false,
+      "ensuringCurrentOnSave": false,
+      "ensuringCurrentReferencesOnQueries": false,
+      "lazySynchronize": true,
+      "wireProtocolEnabled": true,
+      "forceEager": false
+    },
+    "synchronizationEnabled": true,
+    "concurrentSynchronization": false,
+    "headlessMode": true
+  },
+  "logging": {
+    "level": "info"
+  }
+}

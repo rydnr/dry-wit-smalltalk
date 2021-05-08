@@ -3,20 +3,47 @@ Class {
 	#superclass : #BabyMock2TestCase,
 	#traits : 'EDATDomainBDD',
 	#classTraits : 'EDATDomainBDD classTrait',
+	#instVars : [
+		'credentials'
+	],
+	#classInstVars : [
+		'credentials'
+	],
 	#category : #'DW-Domain-AWS-CloudFormation-Tests'
 }
 
+{ #category : #accessing }
+DWAWSListExportsTest class >> credentials [
+	^ credentials
+]
+
+{ #category : #accessing }
+DWAWSListExportsTest class >> credentials: anObject [
+	credentials := anObject
+]
+
+{ #category : #accessing }
+DWAWSListExportsTest >> credentials [
+	^ credentials
+]
+
+{ #category : #accessing }
+DWAWSListExportsTest >> credentials: anObject [
+	credentials := anObject
+]
+
 { #category : #'tests - examples' }
 DWAWSListExportsTest >> exportsRetrieved_example [
-	| exportsRetrieved exportingStackId name value credential region listExports accountCreated |
-	credential := 'credential'.
+	| exportsRetrieved exportingStackId name value region listExports accountCreated accountId |
 	region := 'eu-west-1'.
+	accountId := UUID new greaseString.
 	accountCreated := DWAWSAccountCreated
 		withBuilder:
 			(EDABuilder
 				with:
 					(Dictionary new
-						add: 'credential' -> credential;
+						add: 'accountId' -> accountId;
+						add: 'credentials' -> self credentials;
 						yourself)).
 	exportingStackId := UUID new greaseString.
 	name := UUID new greaseString.
@@ -26,7 +53,7 @@ DWAWSListExportsTest >> exportsRetrieved_example [
 			(EDABuilder
 				with:
 					(Dictionary new
-						add: 'credential' -> credential;
+						add: 'accountId' -> accountId;
 						add: 'region' -> region;
 						yourself)).
 	exportsRetrieved := DWAWSExportsRetrieved
@@ -54,6 +81,11 @@ DWAWSListExportsTest >> exportsRetrieved_test [
 		whenReceiveCommand: example when
 		ofType: 'LIST_EXPORTS'
 		thenEvents: example then
+]
+
+{ #category : #'tests - examples' }
+DWAWSListExportsTest >> setUp [
+	self credentials: self class credentials
 ]
 
 { #category : #tests }

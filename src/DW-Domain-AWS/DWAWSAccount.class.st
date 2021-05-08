@@ -2,7 +2,7 @@ Class {
 	#name : #DWAWSAccount,
 	#superclass : #DWAggregateRoot,
 	#instVars : [
-		'credential'
+		'credentials'
 	],
 	#category : #'DW-Domain-AWS'
 }
@@ -20,15 +20,15 @@ DWAWSAccount class >> withBuilder: aBuilder [
 { #category : #'event handling' }
 DWAWSAccount >> applyAWSAccountCreatedv1: anEvent [
 	self tenant: anEvent tenant.
-	self credential: anEvent credential
+	self credentials: anEvent credentials
 ]
 
 { #category : #accessing }
-DWAWSAccount >> credential [
-	^ credential
+DWAWSAccount >> credentials [
+	^ credentials
 ]
 
 { #category : #accessing }
-DWAWSAccount >> credential: anObject [
-	credential := anObject
+DWAWSAccount >> credentials: anObject [
+	credentials := anObject
 ]

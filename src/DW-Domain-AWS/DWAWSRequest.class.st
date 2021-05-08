@@ -55,7 +55,7 @@ DWAWSRequest >> canonicalQueryString [
 	parameters at: 'Action' ifAbsentPut: [ self action ].
 	parameters at: 'Version' ifAbsentPut: [ self version ].
 	parameters at: 'X-Amz-Algorithm' ifAbsentPut: [ self version ].
-	parameters at: 'X-Amz-Credential' ifAbsentPut: [ self credentialScopeValue: (self credential) ].
+	"parameters at: 'X-Amz-Credential' ifAbsentPut: [ self credentialScopeValue: (self credential) ]."
 	parameters at: 'X-Amz-Date' ifAbsentPut: [ self date ].
 	parameters at: 'X-Amz-Signature' ifAbsentPut: [ self signature ].
 	parameters
@@ -106,11 +106,11 @@ DWAWSRequest >> credential [
 	stream
 		nextPutAll: self secretAccessKey greaseString;
 		nextPut: $/;
-		nextPutAll: self date asYYYYmmdd;
+		nextPutAll: self date greaseString;
 		nextPut: $/;
-		nextPutAll: self region;
+		nextPutAll: self region greaseString;
 		nextPut: $/;
-		nextPutAll: self service;
+		nextPutAll: self service greaseString;
 		nextPutAll: '/aws4_request'.
 	^ stream contents
 ]

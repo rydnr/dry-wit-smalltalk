@@ -2,7 +2,8 @@ Class {
 	#name : #DWAWSAccountCreated,
 	#superclass : #DWEventSourcingEvent,
 	#instVars : [
-		'credential'
+		'accountId',
+		'credentials'
 	],
 	#category : #'DW-Domain-AWS'
 }
@@ -23,17 +24,28 @@ DWAWSAccountCreated class >> withBuilder: aBuilder [
 	<builderClass: #EDABuilder>
 	| result |
 	result := aBuilder
-		withCredential;
+		withAccountId;
+		withCredentials;
 		build: self.
 	^ result
 ]
 
 { #category : #accessing }
-DWAWSAccountCreated >> credential [
-	^ credential
+DWAWSAccountCreated >> accountId [
+	^ accountId
 ]
 
 { #category : #accessing }
-DWAWSAccountCreated >> credential: anObject [
-	credential := anObject
+DWAWSAccountCreated >> accountId: anObject [
+	accountId := anObject
+]
+
+{ #category : #accessing }
+DWAWSAccountCreated >> credentials [
+	^ credentials
+]
+
+{ #category : #accessing }
+DWAWSAccountCreated >> credentials: anObject [
+	credentials := anObject
 ]

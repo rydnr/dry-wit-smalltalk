@@ -1,10 +1,6 @@
 Class {
 	#name : #DWAWSListExports,
-	#superclass : #DWUserCommand,
-	#instVars : [
-		'credential',
-		'region'
-	],
+	#superclass : #DWAWSAccountCommand,
 	#category : #'DW-Domain-AWS-CloudFormation-Exports'
 }
 
@@ -25,7 +21,7 @@ DWAWSListExports class >> withBuilder: aBuilder [
 	<builderClass: #EDABuilder>
 	| result |
 	result := aBuilder
-		withCredential;
+		withAccountId;
 		withRegion;
 		build: self.
 	result version: self latestVersion.
@@ -34,25 +30,5 @@ DWAWSListExports class >> withBuilder: aBuilder [
 
 { #category : #'aggregate selection' }
 DWAWSListExports >> aggregateSelectionCriteria [
-	^ Dictionary with: 'credential' -> self credential
-]
-
-{ #category : #accessing }
-DWAWSListExports >> credential [
-	^ credential
-]
-
-{ #category : #accessing }
-DWAWSListExports >> credential: anObject [
-	credential := anObject
-]
-
-{ #category : #accessing }
-DWAWSListExports >> region [
-	^ region
-]
-
-{ #category : #accessing }
-DWAWSListExports >> region: anObject [
-	region := anObject
+	^ Dictionary with: 'accountId' -> self accountId
 ]

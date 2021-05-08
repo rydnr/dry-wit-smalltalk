@@ -3,33 +3,24 @@ Class {
 	#superclass : #BabyMock2TestCase,
 	#traits : 'EDATDomainBDD',
 	#classTraits : 'EDATDomainBDD classTrait',
-	#instVars : [
-		'credentials'
-	],
-	#classInstVars : [
-		'credentials'
-	],
 	#category : #'DW-Domain-AWS-CloudFormation-Tests'
 }
 
 { #category : #accessing }
 DWAWSListExportsTest class >> credentials [
-	^ credentials
+
+	^ AWSIntegrationTestResource current credentials
 ]
 
 { #category : #accessing }
-DWAWSListExportsTest class >> credentials: anObject [
-	credentials := anObject
+DWAWSListExportsTest class >> resources [
+
+	^ Array with: AWSIntegrationTestResource
 ]
 
 { #category : #accessing }
 DWAWSListExportsTest >> credentials [
-	^ credentials
-]
-
-{ #category : #accessing }
-DWAWSListExportsTest >> credentials: anObject [
-	credentials := anObject
+	^ self class credentials
 ]
 
 { #category : #'tests - examples' }
@@ -81,11 +72,6 @@ DWAWSListExportsTest >> exportsRetrieved_test [
 		whenReceiveCommand: example when
 		ofType: 'LIST_EXPORTS'
 		thenEvents: example then
-]
-
-{ #category : #'tests - examples' }
-DWAWSListExportsTest >> setUp [
-	self credentials: self class credentials
 ]
 
 { #category : #tests }

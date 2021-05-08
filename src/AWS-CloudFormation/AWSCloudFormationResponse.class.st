@@ -1,8 +1,6 @@
 Class {
 	#name : #AWSCloudFormationResponse,
 	#superclass : #AWSXmlObject,
-	#traits : 'EDATPrintOnHelper',
-	#classTraits : 'EDATPrintOnHelper classTrait',
 	#instVars : [
 		'resultXml',
 		'metadataXml'

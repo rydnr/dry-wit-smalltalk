@@ -44,7 +44,7 @@ BaselineOfDryWit >> declareGroupsIn: spec [
 { #category : #packages }
 BaselineOfDryWit >> declarePackagesIn: spec [
 	spec
-		package: #'DW-Domain-Base' with: [ spec requires: #('PharoEDA') ];
+		package: #'DW-Domain-Base' with: [ spec requires: #('EDACodeMain') ];
 		package: #'AWS-CloudFormation'
 			with: [ spec requires: #('AWSToolbox') ];
 		package: #'AWS-CloudFormation-Tests'

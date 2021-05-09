@@ -1,18 +1,18 @@
 Class {
-	#name : #DWAWSListExports,
+	#name : #DWAWSGetExport,
 	#superclass : #DWAWSAccountCommand,
 	#category : #'DW-Domain-AWS-CloudFormation-Exports'
 }
 
 { #category : #accessing }
-DWAWSListExports class >> latestVersion [
+DWAWSGetExport class >> latestVersion [
 	<doc: 'Updates the latest version of the command class'>
 	^ 1
 ]
 
 { #category : #'instance creation' }
-DWAWSListExports class >> withBuilder: aBuilder [
-	<commandName: #LIST_EXPORTS>
+DWAWSGetExport class >> withBuilder: aBuilder [
+	<commandName: #GET_EXPORT>
 	<builderClass: #EDABuilder>
 	| result |
 	result := aBuilder

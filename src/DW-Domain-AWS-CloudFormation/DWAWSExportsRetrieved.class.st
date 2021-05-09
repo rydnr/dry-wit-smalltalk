@@ -1,17 +1,12 @@
 Class {
 	#name : #DWAWSExportsRetrieved,
-	#superclass : #DWEventSourcingEvent,
+	#superclass : #DWAWSAccountEvent,
 	#instVars : [
 		'exports',
 		'requestId'
 	],
 	#category : #'DW-Domain-AWS-CloudFormation-Exports'
 }
-
-{ #category : #meta }
-DWAWSExportsRetrieved class >> aggregateRootClass [
-	^ DWAWSAccount
-]
 
 { #category : #accessing }
 DWAWSExportsRetrieved class >> latestVersion [
@@ -21,7 +16,7 @@ DWAWSExportsRetrieved class >> latestVersion [
 
 { #category : #'instance creation' }
 DWAWSExportsRetrieved class >> withBuilder: aBuilder [
-	<eventName: #LIST_EXPORTS_RETRIEVED>
+	<eventName: #EXPORTS_RETRIEVED>
 	<builderClass: #EDABuilder>
 	| result |
 	result := aBuilder

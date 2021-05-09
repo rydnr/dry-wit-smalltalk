@@ -1,31 +1,14 @@
 Class {
 	#name : #DWAWSListExportsTest,
 	#superclass : #BabyMock2TestCase,
-	#traits : 'EDATDomainBDD',
-	#classTraits : 'EDATDomainBDD classTrait',
+	#traits : 'DWAWSTIntegrationTest',
+	#classTraits : 'DWAWSTIntegrationTest classTrait',
 	#category : #'DW-Domain-AWS-CloudFormation-Tests'
 }
 
-{ #category : #accessing }
-DWAWSListExportsTest class >> credentials [
-
-	^ AWSIntegrationTestResource current credentials
-]
-
-{ #category : #accessing }
-DWAWSListExportsTest class >> resources [
-
-	^ Array with: AWSIntegrationTestResource
-]
-
-{ #category : #accessing }
-DWAWSListExportsTest >> credentials [
-	^ self class credentials
-]
-
 { #category : #'tests - examples' }
 DWAWSListExportsTest >> exportsRetrieved_example [
-	| exportsRetrieved exportingStackId name value region listExports accountCreated accountId |
+	| exportsRetrieved exportingStackId name value region listExports accountCreated accountId exports |
 	region := 'eu-west-1'.
 	accountId := UUID new greaseString.
 	accountCreated := DWAWSAccountCreated
@@ -47,14 +30,22 @@ DWAWSListExportsTest >> exportsRetrieved_example [
 						add: 'accountId' -> accountId;
 						add: 'region' -> region;
 						yourself)).
-	exportsRetrieved := DWAWSExportsRetrieved
-		withBuilder:
+	exports := OrderedCollection
+		with: (DWAWSExport withBuilder:
 			(EDABuilder
 				with:
 					(Dictionary new
 						add: 'exportingStackId' -> exportingStackId;
 						add: 'name' -> name;
 						add: 'value' -> value;
+						yourself))).
+	exportsRetrieved := DWAWSExportsRetrieved
+		withBuilder:
+			(EDABuilder
+				with:
+					(Dictionary new
+						add: 'exports' -> exports;
+						add: 'requestId' -> '<ANYTHING>';
 						yourself)).
 	^ EDAExample
 		given: (OrderedCollection with: accountCreated)

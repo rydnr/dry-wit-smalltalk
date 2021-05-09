@@ -1,17 +1,8 @@
 Class {
 	#name : #DWAWSAccountCreated,
-	#superclass : #DWEventSourcingEvent,
-	#instVars : [
-		'accountId',
-		'credentials'
-	],
+	#superclass : #DWAWSAccountEvent,
 	#category : #'DW-Domain-AWS'
 }
-
-{ #category : #meta }
-DWAWSAccountCreated class >> aggregateRootClass [
-	^ DWAWSAccount
-]
 
 { #category : #accessing }
 DWAWSAccountCreated class >> latestVersion [
@@ -28,24 +19,4 @@ DWAWSAccountCreated class >> withBuilder: aBuilder [
 		withCredentials;
 		build: self.
 	^ result
-]
-
-{ #category : #accessing }
-DWAWSAccountCreated >> accountId [
-	^ accountId
-]
-
-{ #category : #accessing }
-DWAWSAccountCreated >> accountId: anObject [
-	accountId := anObject
-]
-
-{ #category : #accessing }
-DWAWSAccountCreated >> credentials [
-	^ credentials
-]
-
-{ #category : #accessing }
-DWAWSAccountCreated >> credentials: anObject [
-	credentials := anObject
 ]

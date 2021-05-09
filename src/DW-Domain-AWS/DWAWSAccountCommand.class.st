@@ -8,6 +8,11 @@ Class {
 	#category : #'DW-Domain-AWS'
 }
 
+{ #category : #meta }
+DWAWSAccountCommand class >> aggregateRootClass [
+	^ DWAWSAccount
+]
+
 { #category : #testing }
 DWAWSAccountCommand class >> isAbstract [
 	^ true
@@ -26,6 +31,11 @@ DWAWSAccountCommand >> accountId [
 { #category : #accessing }
 DWAWSAccountCommand >> accountId: anObject [
 	accountId := anObject
+]
+
+{ #category : #'aggregate selection' }
+DWAWSAccountCommand >> aggregateSelectionCriteria [
+	^ Dictionary with: 'accountId' -> self accountId
 ]
 
 { #category : #accessing }

@@ -14,10 +14,20 @@ BaselineOfDryWit >> baseline: spec [
 				declarePharoAwsToolboxIn: spec
 				groups: (OrderedCollection with: 'default').
 			self
-				declarePharoEDAIn: spec
+				declareEDACodeMainIn: spec
 				groups: (OrderedCollection with: 'default').
 			self declarePackagesIn: spec.
 			self declareGroupsIn: spec ]
+]
+
+{ #category : #dependencies }
+BaselineOfDryWit >> declareEDACodeMainIn: spec groups: aGroupCollection [
+	spec
+		baseline: #EDACodeMain
+		with: [ spec
+				repository: 'github://edacode/edacode-main:main/src';
+				loads: aGroupCollection ].
+	^ spec
 ]
 
 { #category : #groups }
@@ -58,16 +68,6 @@ BaselineOfDryWit >> declarePharoAwsToolboxIn: spec groups: aGroupCollection [
 		baseline: 'AWSToolbox'
 		with: [ spec
 				repository: 'github://rydnr/pharo-aws-toolbox:master/repository';
-				loads: aGroupCollection ].
-	^ spec
-]
-
-{ #category : #dependencies }
-BaselineOfDryWit >> declarePharoEDAIn: spec groups: aGroupCollection [
-	spec
-		baseline: 'PharoEDA'
-		with: [ spec
-				repository: 'github://osoco/pharo-eda:event-listening/src';
 				loads: aGroupCollection ].
 	^ spec
 ]
